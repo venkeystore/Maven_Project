@@ -6,7 +6,7 @@
   <packaging>war</packaging>
  <version>1.0.0.${BUILD_NUMBER}</version>
   
-<!-- <version>1.0-SNAPSHOT</version>  -->
+<!-- <version>1.0-SNAPSHOT  change by uday</version>  -->
 
   <name>ebay Maven Webapp</name>
   <url>http://maven.apache.org</url>
