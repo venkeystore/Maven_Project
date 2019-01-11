@@ -1,6 +1,6 @@
 pipeline {
 		agent any
-		stages {   
+			stages {   
 
 					stage ( 'Clone sources From GitHub' ) {								
 							steps {
@@ -16,52 +16,28 @@ pipeline {
 	 //							}	
 	 //					}						
 
-		stage ( 'Clean Phase' ) {								
-							steps {
-									withMaven (maven : 'M2_HOME_3.5' ) {
-										sh 'mvn clean '
-											}
-								}	
-						}
+			stage ( 'Build Phase' ) {								
+								steps {
+										withMaven (maven : 'M2_HOME_3.5' ) {
+											sh 'mvn clean pacakge'
+												}
+									}	
+							}
 
-					stage ( 'Compalation Phase' ) {
-							steps {
-									withMaven (maven : 'M2_HOME_3.5' ) {
-										sh 'mvn compile'
-											}
-								}	
-						}					
-					stage ( 'Test Phase' ) {
-							steps {
-									withMaven (maven : 'M2_HOME_3.5' ) {
-										sh 'mvn test'
-											}
-								}	
-						}
-						
-
-					
-					stage ( 'Package' ) {
-							steps {
-									withMaven (maven : 'M2_HOME_3.5' ) {
-										sh 'mvn clean package'
-											}
-								}	
-						}
-					stage ( 'Deploy into Artifatory Repo' ) {
-							steps {
-									withMaven (maven : 'M2_HOME_3.5' ) {
-										sh 'mvn clean package deploy'
-											}
-								}	
-						}
-						
-					stage ( 'Code Coverage' ) {
-							steps {
+			stage ( 'Code Coverage' ) {
+								steps {
 										jacoco()
-								}		
-						}
+									}		
+								}
+			stage ( 'Deployment Phase' ) {
+								steps {
+									sh ' sudo sshpass -p "$PASSWD" scp /home/ec2-user/epel-release-latest-7.noarch.rpm ec2-user@18.224.2.180:/home/ec2-user'
+									}
 
-						
-					}
-			}
+								  }
+
+
+								  
+						}       // Stages End tag			
+			}                 // Pipeline main tag
+	
