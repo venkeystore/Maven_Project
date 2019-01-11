@@ -21,7 +21,7 @@
 		</dependency>
   </dependencies>
   
-<!-- ||BUILD_PROFILES||-->
+<!-- ||BUILD__PROFILES||-->
   
 <profiles>
 	<profile>
