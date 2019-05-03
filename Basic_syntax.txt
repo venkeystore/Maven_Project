@@ -9,7 +9,7 @@ pipeline {
 										}	
 							}
 					
-					// compilatin
+					// //compilatin
 							stage ('Compile Stage') {
 								steps {
 									withMaven (maven : 'MAVEN_3/bin') {
