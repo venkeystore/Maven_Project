@@ -38,17 +38,7 @@ stages{
 //________________________________________________________________________________________________________________________________________
 
    
-        stage('Checkout SCM'){
-            steps {
-					checkout([$class: 'GitSCM', 
-                      branches: [[name: '*/master']], 
-                      doGenerateSubmoduleConfigurations: false, 
-                      extensions: [[$class: 'CleanCheckout']], 
-                      submoduleCfg: [], 
-                      userRemoteConfigs: [[credentialsId: '2c4b4347-5a8a-42df-b073-3c0ae71efb27', url: 'https://github.com/venkeystore/Maven_Project.git']]
-                      ])                             
-				}
-            }                                              
+                                              
                                                 
         stage('Build Phase'){
             steps {
